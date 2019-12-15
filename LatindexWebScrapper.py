@@ -99,5 +99,5 @@ filename = setupFilename(pais, subtema)
 writeFinalCSV(filename, dictList)
 
 # curl -d "folio=7581" -X POST https://www.latindex.org/latindex/extraccionFicha
-# curl -d "directorio=0&tema=6&subtema=6.12&pais=Chile" -X POST https://www.latindex.org/latindex/bAvanzada/envio -H "Content-type: application/x-www-form-urlencoded;"
+
 # curl -d "buscar=nivel_tema%3A6.11+AND+nombre_largo%3A%22Chile%22+AND+situacion%3AC&inicio=0&rows=100000" -H "Content-type: application/x-www-form-urlencoded;" -X POST https://www.latindex.org/latindex/bAvanzada/rslt
