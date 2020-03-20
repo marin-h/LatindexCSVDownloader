@@ -3,6 +3,11 @@ import json
 import csv
 import html
 import urllib.parse
+import requests
+
+# Suppress only the single warning from urllib3 needed.
+from urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 def letUserPick(_nombreOpcion, _opciones):
     print(f'Elija un {_nombreOpcion}')
@@ -23,12 +28,12 @@ def setupPayload(_subtema, _pais):
 def getSearchPost(_subtema, _pais):
     url = 'https://www.latindex.org/latindex/bAvanzada/rslt'
     headers = { 'content-type' : 'application/x-www-form-urlencoded' }
-    return requests.post(url, data=setupPayload(_subtema, _pais), headers=headers)
+    return requests.post(url, data=setupPayload(_subtema, _pais), headers=headers, verify=False)
 
 def downloadCSV(_folio):
     payload = f'folio={_folio}'
     headers = {'content-type' : 'application/x-www-form-urlencoded'}
-    return requests.post('https://www.latindex.org/latindex/extraccionFicha', data=payload, headers=headers)
+    return requests.post('https://www.latindex.org/latindex/extraccionFicha', data=payload, headers=headers, verify=False)
 
 def setupFilename(_pais, _subtema):
     return f'revistas_{_pais.replace(" ","_")}_{_subtema}.csv'
