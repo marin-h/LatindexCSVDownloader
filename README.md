@@ -1,2 +1,4 @@
-# LatindexCSVDownloader
-Python script for downloading data from Latindex.org
+# Scrap Latindex
+
+* Scrap Latindex by country and publishing type
+* Outputs data as csv
